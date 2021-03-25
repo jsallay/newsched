@@ -1,4 +1,4 @@
-#include <gnuradio/kernels/cpu/agc.hpp>
+#include <gnuradio/kernels/cpu/agc_ff.hpp>
 #include <gtest/gtest.h>
 #include <iostream>
 #include <thread>
@@ -6,9 +6,9 @@
 using namespace gr;
 namespace analog = gr::kernels::analog::cpu;
 
-TEST(AnalogKernelGrouping, agc_float_identity_test)
+TEST(AnalogKernel, agc_float_identity_test)
 {
-    auto agc_kernel = analog::agc<float>(.001f, 1.0f, 1.0f, 65536.0f);
+    auto agc_kernel = analog::agc_ff(.001f, 1.0f, 1.0f, 65536.0f);
     float input[1000];
     float output[1000];
     float expected_output[1000];
@@ -25,9 +25,9 @@ TEST(AnalogKernelGrouping, agc_float_identity_test)
         EXPECT_NEAR(output[idx], expected_output[idx], .0001f);
 }
 
-TEST(AnalogKernelGrouping, agc_float_ramp_test)
+TEST(AnalogKernel, agc_float_ramp_test)
 {
-    auto agc_kernel = analog::agc<float>(.001f, 1.0f, 1.0f, 65536.0f);
+    auto agc_kernel = analog::agc_ff(.001f, 1.0f, 1.0f, 65536.0f);
     float input[1000];
     float output[1000];
     float expected_output[1000] = {

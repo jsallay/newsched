@@ -5,7 +5,7 @@ incdir = include_directories([
 ])
 
 srcs = [
-    'agc.cpp',
+    'agc_ff.cpp',
     'copy.cpp'
 ]
 
