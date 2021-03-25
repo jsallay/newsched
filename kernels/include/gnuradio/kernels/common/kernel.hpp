@@ -19,18 +19,6 @@ struct kernel_interface {
     kernel_description description_;
 
     /**
-     * @brief A signature for when the input and output buffers are of different sizes
-     * @param in_buffer
-     * @param out_buffer
-     * @param num_input_items
-     * @param num_output_items
-     */
-    virtual void operator()(void* in_buffer,
-                            void* out_buffer,
-                            size_t num_input_items,
-                            size_t num_output_items) = 0;
-
-    /**
      * @brief A signature for when the input and output buffers are different, but of the
      * same size
      *
@@ -54,5 +42,23 @@ struct kernel_interface {
      */
     virtual ~kernel_interface() = default;
 };
+
+/**
+ * @brief An interface for all kernels to implement
+ *
+ */
+struct multi_rate_kernel_interface : kernel_interface {
+    /**
+     * @brief A signature for when the input and output buffers are different, but of the
+     * same size
+     *
+     * @param in_buffer
+     * @param out_buffer
+     * @param num_items
+     */
+    virtual void operator()(void* in_buffer, void* out_buffer, size_t num_items) = 0;
+};
+
+
 } // namespace kernels
 } // namespace gr

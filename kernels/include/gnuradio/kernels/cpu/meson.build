@@ -1,4 +1,5 @@
 headers = [
+    'agc.hpp',
     'copy.hpp'
 ]
 

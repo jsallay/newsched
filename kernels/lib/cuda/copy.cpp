@@ -37,8 +37,8 @@ void copy_kernel::operator()(void* in_buffer,
     cudaStreamCreate(&stream);
 
     auto in_data = const_cast<cuFloatComplex*>(
-        reinterpret_cast<const cuFloatComplex*>(in_buffer + s * batch_size));
-    auto out_data = reinterpret_cast<cuFloatComplex*>(out_buffer + s * batch_size);
+        reinterpret_cast<const cuFloatComplex*>(in_buffer + batch_size));
+    auto out_data = reinterpret_cast<cuFloatComplex*>(out_buffer + batch_size);
 
     apply_copy(in_data, out_data, batch_size / block_size, block_size, load, stream);
     cudaStreamSynchronize(stream);
