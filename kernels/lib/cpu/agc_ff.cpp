@@ -1,4 +1,4 @@
-#include <gnuradio/kernels/cpu/agc.hpp>
+#include <gnuradio/kernels/cpu/agc_ff.hpp>
 #include <cmath>
 
 namespace gr {
@@ -17,21 +17,6 @@ void agc_ff::operator()(void* in_buffer, void* out_buffer, size_t num_items)
             _gain = _max_gain;
     }
 }
-
-// void agc<std::complex<double>>::operator()(void* in_buffer,
-//                                            void* out_buffer,
-//                                            size_t num_items)
-// {
-//     std::complex<double>* in = reinterpret_cast<std::complex<double>*>(in_buffer);
-//     std::complex<double>* out = reinterpret_cast<std::complex<double>*>(out_buffer);
-//     for (unsigned int i = 0; i < num_items; i++) {
-//         out[i] = in[i] * _gain;
-//         _gain += _rate * (_reference - std::sqrt(out[i].real() * out[i].real() +
-//                                                  out[i].imag() * out[i].imag()));
-//         if (_max_gain > 0.0 && _gain > _max_gain)
-//             _gain = _max_gain;
-//     }
-// }
 
 } // namespace cpu
 } // namespace analog
