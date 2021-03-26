@@ -8,6 +8,12 @@ namespace kernels {
 namespace analog {
 namespace cpu {
 
+/**
+ * @brief Automatic Gain Control
+ * \ingroup level_controllers
+ *
+ *
+ */
 struct agc_ff : kernel_interface {
 public:
     agc_ff(float rate, float reference, float gain, float max_gain)
@@ -17,7 +23,7 @@ public:
     void operator()(void* buffer, size_t num_items)
     {
         operator()(buffer, buffer, num_items);
-    }
+    };
 
 protected:
     float _rate;      // adjustment rate
