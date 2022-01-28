@@ -1,0 +1,19 @@
+{
+  "blocks": {
+    "source": {
+      "block": "null_source",
+      "args": [
+        4
+      ]
+    },
+    "sink": {
+      "block": "null_sink",
+      "args": [
+        4
+      ]
+    }
+  },
+  "connections": [
+    ["source", 0, "sink", 0]
+  ]
+}
